@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "notifidaq"
+requires-python = ">=3.10" # ,<3.11" for the dunedaq
+dynamic = ["version", "readme"]
+dependencies = [
+    "grpcio==1.68.0",
+    "googleapis-common-protos==1.66.0",
+    "grpcio-status==1.68.0",
+    "grpcio-tools==1.68.0",
+    "gunicorn==23.0.0",
+    "kafka-python-ng",
+    "mypy-protobuf",
+    "click",
+    "rich",
+]
+
+[project.scripts]
+fake-application = "notifidaq.apps.fake_app:main"
+fake-controller = "notifidaq.apps.fake_controller:main"
+notifidaq-consumer-all = "notifidaq.apps.consume_all:main"
+
+[project.optional-dependencies]
+dev = ["ruff", "pre-commit", "pytest",]
+
+[tool.setuptools.dynamic]
+version = {attr = "notifidaq.__version__"}
+readme = {file = ["docs/README.md"]}
+
+[tool.setuptools.packages.find]
+where = ["src"]

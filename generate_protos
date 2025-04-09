@@ -1,0 +1,6 @@
+#!/bin/bash
+for FILE in schema/*.proto;
+do
+    echo "Generating protocols for ${FILE}"
+    python -m grpc_tools.protoc -I./schema/ --python_out=src/notifidaq/models/ --mypy_out=src/notifidaq/models/ --plugin=protoc-gen-mypy=$(which protoc-gen-mypy) ${FILE}
+done

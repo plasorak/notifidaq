@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
+package dunedaq.notifidaq;
+
+enum SystemType {
+  UNKNOWN = 0;
+  CONTROLLER = 1;
+  DAQ_APPLICATION = 2;
+  PROCESS_MANAGER = 3;
+  SESSION_MANAGER = 4;
+  RESOURCE_MANAGER = 5;
+  AUTHORISER_SERVICE = 6;
+};
+
+message Origin {
+    SystemType system = 1;
+    string instance_name = 2;
+    optional string session_name = 3;
+}
+
+message Notification {
+    Origin source = 1;
+    google.protobuf.Timestamp timestamp = 2;
+    google.protobuf.Any payload = 3;
+}

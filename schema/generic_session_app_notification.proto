@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package dunedaq.notifidaq;
+
+message ApplicationInitialised{
+    google.protobuf.Empty payload = 1;
+}
+
+message ApplicationStarted{
+    google.protobuf.Empty payload = 1;
+}
+
+message ApplicationAdvertisedConnectivityService{
+    google.protobuf.Empty payload = 1;
+}
+
+message ApplicationUnregisteredFromConnectivityService{
+    google.protobuf.Empty payload = 1;
+}
+
+message Shutdown{
+    google.protobuf.Empty payload = 1;
+}
+

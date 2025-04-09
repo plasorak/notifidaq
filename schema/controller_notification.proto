@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package dunedaq.notifidaq;
+
+message ControllerFoundChildren{
+    google.protobuf.Empty payload = 1;
+}
+
+
