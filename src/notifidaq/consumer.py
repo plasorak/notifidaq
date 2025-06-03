@@ -19,8 +19,8 @@ class NotifidaqConsumer:
             value_deserializer = lambda v: Notification.FromString(v),
         )
 
-    async def consume(self):
-        async for message in self.consumer:
+    def consume(self):
+        for message in self.consumer:
             yield message.value
 
     def await_notification(self, notification_type:Notification):

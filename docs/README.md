@@ -4,13 +4,13 @@ Exploring
 ## Setup
 ### Producer
 ```bash
-docker-compose up
+docker-compose up -d
 python -m venv venv
 source venv/bin/activate
 pip install -e .
 ./generate_protos
-fake-application
+fake-application [OPTIONS] INSTANCE_NAME SESSION_NAME
 ```
 
 ### Consumer
-Not yet here.
+notifidaq-consumer-all [OPTIONS] INSTANCE_NAME SESSION_NAME
