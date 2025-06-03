@@ -13,4 +13,6 @@ fake-application [OPTIONS] INSTANCE_NAME SESSION_NAME
 ```
 
 ### Consumer
+```bash
 notifidaq-consumer-all [OPTIONS] INSTANCE_NAME SESSION_NAME
+```
