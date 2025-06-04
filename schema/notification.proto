@@ -14,14 +14,22 @@ enum SystemType {
   AUTHORISER_SERVICE = 6;
 };
 
+enum AppNotificationType {
+  MODULE_INITIALISED = 1;
+};
+enum ControllerNotificationType {
+  FOUND_CHILDREN = 1;
+};
+
 message Origin {
     SystemType system = 1;
     string instance_name = 2;
     optional string session_name = 3;
-}
+};
 
 message Notification {
     Origin source = 1;
     google.protobuf.Timestamp timestamp = 2;
-    google.protobuf.Any payload = 3;
-}
+    uint32 notification_type = 3;
+    google.protobuf.Any payload = 4;
+};
