@@ -19,9 +19,21 @@ class NotifidaqConsumer:
             value_deserializer = lambda v: Notification.FromString(v),
         )
 
-    def consume(self):
-        for message in self.consumer:
-            yield message.value
+    def _select_notification(notification_type, instance_name:str=None, session_name:str=None, system_type:SystemType = None) -> bool:
+        if ...
+            return True
+        return False
 
-    def await_notification(self, notification_type:Notification):
-        pass
+    def consume(self, notification_type, instance_name:str=None, session_name:str=None, system_type:SystemType = None):
+        for message in self.consumer:
+            if self._select_notification(message):
+                yield message.value
+            
+
+    def await_notification(self, notification_type, instance_name:str=None, session_name:str=None, system_type:SystemType = None, timeout:int=0):
+        start_time = time.now()
+        while time.now-start_time < timeout:
+            notification = consume...
+            if self.select_notification(notifcation, )
+                return notification
+        return None
