@@ -15,10 +15,10 @@ enum SystemType {
 };
 
 enum AppNotificationType {
-  MODULE_INITIALISED = 1;
+  Modules_Initialised = 0;
 };
 enum ControllerNotificationType {
-  FOUND_CHILDREN = 1;
+  Controller_FoundChildren = 0;
 };
 
 message Origin {
@@ -30,6 +30,9 @@ message Origin {
 message Notification {
     Origin source = 1;
     google.protobuf.Timestamp timestamp = 2;
-    uint32 notification_type = 3;
-    google.protobuf.Any payload = 4;
+    oneof typed_notification_type {
+    AppNotificationType app_type = 3;
+    ControllerNotificationType controller_type = 4;
+  }
+    google.protobuf.Any payload = 5;
 };
