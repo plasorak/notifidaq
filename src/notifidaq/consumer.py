@@ -2,6 +2,9 @@ from kafka import KafkaConsumer
 
 from notifidaq.models.notification_pb2 import Notification, SystemType
 from notifidaq.utils import build_topic
+import time
+import logging
+
 
 class NotifidaqConsumer:
     def __init__(self, bootstrap:str, instance_name:str=None, system_type:SystemType=None, session_name:str=None):
@@ -10,6 +13,8 @@ class NotifidaqConsumer:
         self.instance_name = instance_name
         self.system_type = system_type
         self.session_name = session_name
+        
+        self.log = logging.getLogger("NotifidaqConsumer")
 
         self.topic = build_topic(system_type, instance_name, session_name)
 
@@ -19,21 +24,38 @@ class NotifidaqConsumer:
             value_deserializer = lambda v: Notification.FromString(v),
         )
 
-    def _select_notification(notification_type, instance_name:str=None, session_name:str=None, system_type:SystemType = None) -> bool:
-        if ...
-            return True
-        return False
+    def _select_notification(self, notification: Notification, notification_type, instance_name:str=None, session_name:str=None, system_type:SystemType = None) -> bool:
+        oneof_name = notification.WhichOneof("typed_notification_type")
+        if not oneof_name:
+            return False
+        notif_type = getattr(notification, oneof_name)
+
+        if notif_type != notification_type:
+            return False
+        if instance_name is not None and notification.source.instance_name != instance_name:
+            return False
+        if session_name is not None and notification.source.session_name != session_name:
+            return False
+        if system_type is not None and notification.source.system != system_type:
+            return False
+        return True
+
 
     def consume(self, notification_type, instance_name:str=None, session_name:str=None, system_type:SystemType = None):
         for message in self.consumer:
-            if self._select_notification(message):
-                yield message.value
+            notification = message.value
+            if self._select_notification(notification, notification_type, instance_name, session_name, system_type):
+                type_url = notification.payload.type_url
+                type_name = type_url.split('.')[-1]
+                self.log.info(f"Receive message '{type_name}' on '{self.topic}'")
+
+                yield notification
             
 
-    def await_notification(self, notification_type, instance_name:str=None, session_name:str=None, system_type:SystemType = None, timeout:int=0):
-        start_time = time.now()
-        while time.now-start_time < timeout:
-            notification = consume...
-            if self.select_notification(notifcation, )
-                return notification
+    def await_notification(self, notification_type, timeout:int=0, instance_name:str=None, session_name:str=None, system_type:SystemType = None):
+        start_time = time.time()
+        for notification in self.consume(notification_type, instance_name, session_name, system_type):
+            if timeout > 0 and (time.time() - start_time) > timeout:
+                break
+            return notification
         return None

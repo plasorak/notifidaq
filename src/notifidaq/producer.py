@@ -39,15 +39,27 @@ class NotifidaqProducer:
 
         self.log.info(f"Sending message '{message.DESCRIPTOR.name}' to '{self.topic}'")
 
-        return self.kafka_producer.send(
-            self.topic,
-            value = Notification(
-                source = Origin(
-                    system = self.system_type,
-                    instance_name = self.instance_name,
-                    session_name = self.session_name
-                ),
-                timestamp = t,
-                payload = pack_to_any(message)
-            ),
-        )
+        notification = Notification(
+        source=Origin(
+            system=self.system_type,
+            instance_name=self.instance_name,
+            session_name=self.session_name
+        ),
+        timestamp=t,
+        payload=pack_to_any(message),
+    )
+
+        type_name = message.DESCRIPTOR.name
+        if type_name == "ModulesInitialised":
+            from notifidaq.models.notification_pb2 import AppNotificationType
+            notification.app_type = AppNotificationType.Modules_Initialised
+        elif type_name == "ControllerFoundChildren":
+            from notifidaq.models.notification_pb2 import ControllerNotificationType
+            notification.controller_type = ControllerNotificationType.Controller_FoundChildren
+        else:
+            self.log.warning(f"Unrecognized message type: {type_name}")
+
+        self.log.info(f"Sending message '{type_name}' to '{self.topic}'")
+
+        return self.kafka_producer.send(self.topic, value=notification)
+
