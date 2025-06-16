@@ -95,3 +95,20 @@ class Shutdown(google.protobuf.message.Message):
     def ClearField(self, field_name: typing.Literal["payload", b"payload"]) -> None: ...
 
 global___Shutdown = Shutdown
+
+@typing.final
+class ControllerFoundChildren(google.protobuf.message.Message):
+    DESCRIPTOR: google.protobuf.descriptor.Descriptor
+
+    PAYLOAD_FIELD_NUMBER: builtins.int
+    @property
+    def payload(self) -> google.protobuf.empty_pb2.Empty: ...
+    def __init__(
+        self,
+        *,
+        payload: google.protobuf.empty_pb2.Empty | None = ...,
+    ) -> None: ...
+    def HasField(self, field_name: typing.Literal["payload", b"payload"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["payload", b"payload"]) -> None: ...
+
+global___ControllerFoundChildren = ControllerFoundChildren

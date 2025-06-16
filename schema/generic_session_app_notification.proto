@@ -24,3 +24,7 @@ message Shutdown{
     google.protobuf.Empty payload = 1;
 }
 
+message ControllerFoundChildren{
+    google.protobuf.Empty payload = 1;
+}
+

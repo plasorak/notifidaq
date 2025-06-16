@@ -25,7 +25,7 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n&generic_session_app_notification.proto\x12\x11\x64unedaq.notifidaq\x1a\x1bgoogle/protobuf/empty.proto\"A\n\x16\x41pplicationInitialised\x12\'\n\x07payload\x18\x01 \x01(\x0b\x32\x16.google.protobuf.Empty\"=\n\x12\x41pplicationStarted\x12\'\n\x07payload\x18\x01 \x01(\x0b\x32\x16.google.protobuf.Empty\"S\n(ApplicationAdvertisedConnectivityService\x12\'\n\x07payload\x18\x01 \x01(\x0b\x32\x16.google.protobuf.Empty\"Y\n.ApplicationUnregisteredFromConnectivityService\x12\'\n\x07payload\x18\x01 \x01(\x0b\x32\x16.google.protobuf.Empty\"3\n\x08Shutdown\x12\'\n\x07payload\x18\x01 \x01(\x0b\x32\x16.google.protobuf.Emptyb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n&generic_session_app_notification.proto\x12\x11\x64unedaq.notifidaq\x1a\x1bgoogle/protobuf/empty.proto\"A\n\x16\x41pplicationInitialised\x12\'\n\x07payload\x18\x01 \x01(\x0b\x32\x16.google.protobuf.Empty\"=\n\x12\x41pplicationStarted\x12\'\n\x07payload\x18\x01 \x01(\x0b\x32\x16.google.protobuf.Empty\"S\n(ApplicationAdvertisedConnectivityService\x12\'\n\x07payload\x18\x01 \x01(\x0b\x32\x16.google.protobuf.Empty\"Y\n.ApplicationUnregisteredFromConnectivityService\x12\'\n\x07payload\x18\x01 \x01(\x0b\x32\x16.google.protobuf.Empty\"3\n\x08Shutdown\x12\'\n\x07payload\x18\x01 \x01(\x0b\x32\x16.google.protobuf.Empty\"B\n\x17\x43ontrollerFoundChildren\x12\'\n\x07payload\x18\x01 \x01(\x0b\x32\x16.google.protobuf.Emptyb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -42,4 +42,6 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_APPLICATIONUNREGISTEREDFROMCONNECTIVITYSERVICE']._serialized_end=394
   _globals['_SHUTDOWN']._serialized_start=396
   _globals['_SHUTDOWN']._serialized_end=447
+  _globals['_CONTROLLERFOUNDCHILDREN']._serialized_start=449
+  _globals['_CONTROLLERFOUNDCHILDREN']._serialized_end=515
 # @@protoc_insertion_point(module_scope)
