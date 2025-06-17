@@ -1,5 +1,5 @@
 from notifidaq.consumer import NotifidaqConsumer
-from notifidaq.models.notification_pb2 import SystemType, AppNotificationType
+from notifidaq.models.notification_pb2 import SystemType,NotificationType
 import click
 import logging
 
@@ -24,7 +24,7 @@ def main(bootstrap, timeout, instance_name, session_name):
     log.info("Subscribed. Waiting for ModulesInitialised...")
 
     notification = consumer.await_notification(
-        notification_type=AppNotificationType.Modules_Initialised,
+        notification_type=NotificationType.Modules_Initialised,
         timeout=timeout,
         instance_name=instance_name,
         session_name=session_name,

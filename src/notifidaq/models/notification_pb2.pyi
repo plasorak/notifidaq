@@ -44,31 +44,20 @@ RESOURCE_MANAGER: SystemType.ValueType  # 5
 AUTHORISER_SERVICE: SystemType.ValueType  # 6
 global___SystemType = SystemType
 
-class _AppNotificationType:
+class _NotificationType:
     ValueType = typing.NewType("ValueType", builtins.int)
     V: typing_extensions.TypeAlias = ValueType
 
-class _AppNotificationTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_AppNotificationType.ValueType], builtins.type):
+class _NotificationTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_NotificationType.ValueType], builtins.type):
     DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
-    Modules_Initialised: _AppNotificationType.ValueType  # 0
+    Modules_Initialised: _NotificationType.ValueType  # 0
+    Controller_FoundChildren: _NotificationType.ValueType  # 1
 
-class AppNotificationType(_AppNotificationType, metaclass=_AppNotificationTypeEnumTypeWrapper): ...
+class NotificationType(_NotificationType, metaclass=_NotificationTypeEnumTypeWrapper): ...
 
-Modules_Initialised: AppNotificationType.ValueType  # 0
-global___AppNotificationType = AppNotificationType
-
-class _ControllerNotificationType:
-    ValueType = typing.NewType("ValueType", builtins.int)
-    V: typing_extensions.TypeAlias = ValueType
-
-class _ControllerNotificationTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrapper._EnumTypeWrapper[_ControllerNotificationType.ValueType], builtins.type):
-    DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
-    Controller_FoundChildren: _ControllerNotificationType.ValueType  # 0
-
-class ControllerNotificationType(_ControllerNotificationType, metaclass=_ControllerNotificationTypeEnumTypeWrapper): ...
-
-Controller_FoundChildren: ControllerNotificationType.ValueType  # 0
-global___ControllerNotificationType = ControllerNotificationType
+Modules_Initialised: NotificationType.ValueType  # 0
+Controller_FoundChildren: NotificationType.ValueType  # 1
+global___NotificationType = NotificationType
 
 @typing.final
 class Origin(google.protobuf.message.Message):
@@ -99,11 +88,9 @@ class Notification(google.protobuf.message.Message):
 
     SOURCE_FIELD_NUMBER: builtins.int
     TIMESTAMP_FIELD_NUMBER: builtins.int
-    APP_TYPE_FIELD_NUMBER: builtins.int
-    CONTROLLER_TYPE_FIELD_NUMBER: builtins.int
+    NOTIFICATION_TYPE_FIELD_NUMBER: builtins.int
     PAYLOAD_FIELD_NUMBER: builtins.int
-    app_type: global___AppNotificationType.ValueType
-    controller_type: global___ControllerNotificationType.ValueType
+    notification_type: global___NotificationType.ValueType
     @property
     def source(self) -> global___Origin: ...
     @property
@@ -115,12 +102,10 @@ class Notification(google.protobuf.message.Message):
         *,
         source: global___Origin | None = ...,
         timestamp: google.protobuf.timestamp_pb2.Timestamp | None = ...,
-        app_type: global___AppNotificationType.ValueType = ...,
-        controller_type: global___ControllerNotificationType.ValueType = ...,
+        notification_type: global___NotificationType.ValueType = ...,
         payload: google.protobuf.any_pb2.Any | None = ...,
     ) -> None: ...
-    def HasField(self, field_name: typing.Literal["app_type", b"app_type", "controller_type", b"controller_type", "payload", b"payload", "source", b"source", "timestamp", b"timestamp", "typed_notification_type", b"typed_notification_type"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["app_type", b"app_type", "controller_type", b"controller_type", "payload", b"payload", "source", b"source", "timestamp", b"timestamp", "typed_notification_type", b"typed_notification_type"]) -> None: ...
-    def WhichOneof(self, oneof_group: typing.Literal["typed_notification_type", b"typed_notification_type"]) -> typing.Literal["app_type", "controller_type"] | None: ...
+    def HasField(self, field_name: typing.Literal["payload", b"payload", "source", b"source", "timestamp", b"timestamp"]) -> builtins.bool: ...
+    def ClearField(self, field_name: typing.Literal["notification_type", b"notification_type", "payload", b"payload", "source", b"source", "timestamp", b"timestamp"]) -> None: ...
 
 global___Notification = Notification

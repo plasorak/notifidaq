@@ -1,6 +1,6 @@
 from kafka import KafkaConsumer
 
-from notifidaq.models.notification_pb2 import Notification, SystemType
+from notifidaq.models.notification_pb2 import Notification, SystemType, NotificationType
 from notifidaq.utils import build_topic
 import time
 import logging
@@ -25,13 +25,6 @@ class NotifidaqConsumer:
         )
 
     def _select_notification(self, notification: Notification, notification_type, instance_name:str=None, session_name:str=None, system_type:SystemType = None) -> bool:
-        oneof_name = notification.WhichOneof("typed_notification_type")
-        if not oneof_name:
-            return False
-        notif_type = getattr(notification, oneof_name)
-
-        if notif_type != notification_type:
-            return False
         if instance_name is not None and notification.source.instance_name != instance_name:
             return False
         if session_name is not None and notification.source.session_name != session_name:

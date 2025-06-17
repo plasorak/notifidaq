@@ -26,21 +26,19 @@ from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12notification.proto\x12\x11\x64unedaq.notifidaq\x1a\x19google/protobuf/any.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"z\n\x06Origin\x12-\n\x06system\x18\x01 \x01(\x0e\x32\x1d.dunedaq.notifidaq.SystemType\x12\x15\n\rinstance_name\x18\x02 \x01(\t\x12\x19\n\x0csession_name\x18\x03 \x01(\tH\x00\x88\x01\x01\x42\x0f\n\r_session_name\"\xb0\x02\n\x0cNotification\x12)\n\x06source\x18\x01 \x01(\x0b\x32\x19.dunedaq.notifidaq.Origin\x12-\n\ttimestamp\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12:\n\x08\x61pp_type\x18\x03 \x01(\x0e\x32&.dunedaq.notifidaq.AppNotificationTypeH\x00\x12H\n\x0f\x63ontroller_type\x18\x04 \x01(\x0e\x32-.dunedaq.notifidaq.ControllerNotificationTypeH\x00\x12%\n\x07payload\x18\x05 \x01(\x0b\x32\x14.google.protobuf.AnyB\x19\n\x17typed_notification_type*\x96\x01\n\nSystemType\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0e\n\nCONTROLLER\x10\x01\x12\x13\n\x0f\x44\x41Q_APPLICATION\x10\x02\x12\x13\n\x0fPROCESS_MANAGER\x10\x03\x12\x13\n\x0fSESSION_MANAGER\x10\x04\x12\x14\n\x10RESOURCE_MANAGER\x10\x05\x12\x16\n\x12\x41UTHORISER_SERVICE\x10\x06*.\n\x13\x41ppNotificationType\x12\x17\n\x13Modules_Initialised\x10\x00*:\n\x1a\x43ontrollerNotificationType\x12\x1c\n\x18\x43ontroller_FoundChildren\x10\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x12notification.proto\x12\x11\x64unedaq.notifidaq\x1a\x19google/protobuf/any.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"z\n\x06Origin\x12-\n\x06system\x18\x01 \x01(\x0e\x32\x1d.dunedaq.notifidaq.SystemType\x12\x15\n\rinstance_name\x18\x02 \x01(\t\x12\x19\n\x0csession_name\x18\x03 \x01(\tH\x00\x88\x01\x01\x42\x0f\n\r_session_name\"\xcf\x01\n\x0cNotification\x12)\n\x06source\x18\x01 \x01(\x0b\x32\x19.dunedaq.notifidaq.Origin\x12-\n\ttimestamp\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12>\n\x11notification_type\x18\x03 \x01(\x0e\x32#.dunedaq.notifidaq.NotificationType\x12%\n\x07payload\x18\x04 \x01(\x0b\x32\x14.google.protobuf.Any*\x96\x01\n\nSystemType\x12\x0b\n\x07UNKNOWN\x10\x00\x12\x0e\n\nCONTROLLER\x10\x01\x12\x13\n\x0f\x44\x41Q_APPLICATION\x10\x02\x12\x13\n\x0fPROCESS_MANAGER\x10\x03\x12\x13\n\x0fSESSION_MANAGER\x10\x04\x12\x14\n\x10RESOURCE_MANAGER\x10\x05\x12\x16\n\x12\x41UTHORISER_SERVICE\x10\x06*I\n\x10NotificationType\x12\x17\n\x13Modules_Initialised\x10\x00\x12\x1c\n\x18\x43ontroller_FoundChildren\x10\x01\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'notification_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_SYSTEMTYPE']._serialized_start=533
-  _globals['_SYSTEMTYPE']._serialized_end=683
-  _globals['_APPNOTIFICATIONTYPE']._serialized_start=685
-  _globals['_APPNOTIFICATIONTYPE']._serialized_end=731
-  _globals['_CONTROLLERNOTIFICATIONTYPE']._serialized_start=733
-  _globals['_CONTROLLERNOTIFICATIONTYPE']._serialized_end=791
+  _globals['_SYSTEMTYPE']._serialized_start=436
+  _globals['_SYSTEMTYPE']._serialized_end=586
+  _globals['_NOTIFICATIONTYPE']._serialized_start=588
+  _globals['_NOTIFICATIONTYPE']._serialized_end=661
   _globals['_ORIGIN']._serialized_start=101
   _globals['_ORIGIN']._serialized_end=223
   _globals['_NOTIFICATION']._serialized_start=226
-  _globals['_NOTIFICATION']._serialized_end=530
+  _globals['_NOTIFICATION']._serialized_end=433
 # @@protoc_insertion_point(module_scope)

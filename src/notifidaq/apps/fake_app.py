@@ -1,8 +1,8 @@
 from notifidaq.producer import NotifidaqProducer
 from notifidaq.consumer import NotifidaqConsumer
-from notifidaq.models.notification_pb2 import SystemType
-from notifidaq.models.generic_session_app_notification_pb2 import ApplicationInitialised, ApplicationStarted, ApplicationAdvertisedConnectivityService, ApplicationUnregisteredFromConnectivityService, Shutdown
+from notifidaq.models.notification_pb2 import SystemType, NotificationType
 from notifidaq.models.app_notification_pb2 import ModulesInitialised
+from notifidaq.models.generic_session_app_notification_pb2 import ApplicationInitialised, ApplicationStarted, ApplicationAdvertisedConnectivityService, ApplicationUnregisteredFromConnectivityService, Shutdown
 
 import logging
 import click
@@ -30,23 +30,23 @@ def main(bootstrap, instance_name, session_name):
         session_name = session_name
     )
 
-    time.sleep(random.random() * max_sleep)
-    producer.notify(ApplicationInitialised())
+    #time.sleep(random.random() * max_sleep)
+    #producer.notify(ApplicationInitialised())
+
+    #time.sleep(random.random() * max_sleep)
+    #producer.notify(ApplicationStarted())
 
     time.sleep(random.random() * max_sleep)
-    producer.notify(ApplicationStarted())
+    producer.notify(NotificationType.Modules_Initialised, ModulesInitialised())
 
-    time.sleep(random.random() * max_sleep)
-    producer.notify(ModulesInitialised())
+    #time.sleep(random.random() * max_sleep)
+    #producer.notify(ApplicationAdvertisedConnectivityService())
 
-    time.sleep(random.random() * max_sleep)
-    producer.notify(ApplicationAdvertisedConnectivityService())
+    #time.sleep(app_live_time)
+    #producer.notify(ApplicationUnregisteredFromConnectivityService())
 
-    time.sleep(app_live_time)
-    producer.notify(ApplicationUnregisteredFromConnectivityService())
-
-    time.sleep(random.random() * max_sleep)
-    producer.notify(Shutdown())
+    #time.sleep(random.random() * max_sleep)
+    #producer.notify(Shutdown())
 
     log.info(f"Fake application {instance_name} in session {session_name} shutdown")
 

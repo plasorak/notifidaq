@@ -14,11 +14,9 @@ enum SystemType {
   AUTHORISER_SERVICE = 6;
 };
 
-enum AppNotificationType {
+enum NotificationType {
   Modules_Initialised = 0;
-};
-enum ControllerNotificationType {
-  Controller_FoundChildren = 0;
+  Controller_FoundChildren = 1;
 };
 
 message Origin {
@@ -30,9 +28,6 @@ message Origin {
 message Notification {
     Origin source = 1;
     google.protobuf.Timestamp timestamp = 2;
-    oneof typed_notification_type {
-    AppNotificationType app_type = 3;
-    ControllerNotificationType controller_type = 4;
-  }
-    google.protobuf.Any payload = 5;
+    NotificationType notification_type = 3;
+    google.protobuf.Any payload = 4;
 };
