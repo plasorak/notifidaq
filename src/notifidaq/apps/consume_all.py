@@ -1,6 +1,6 @@
 from notifidaq.consumer import NotifidaqConsumer
 from notifidaq.models.notification_pb2 import SystemType
-from notifidaq.models.generic_session_app_notification_pb2 import ControllerFoundChildren
+from notifidaq.models.generic_session_app_notification_pb2 import ApplicationAdvertisedConnectivityService
 
 import click
 import logging
@@ -19,14 +19,12 @@ def main(bootstrap, timeout, instance_name, session_name):
     consumer = NotifidaqConsumer(
         bootstrap=bootstrap,
         instance_name=instance_name,
-        system_type=SystemType.CONTROLLER,
+        system_type=SystemType.DAQ_APPLICATION,
         session_name=session_name
     )
 
-    notification_type = ControllerFoundChildren
+    notification_type = ApplicationAdvertisedConnectivityService
    
-    log.info(f"Subscribed. Waiting for {notification_type}")
-
     notification = consumer.await_notification(
         notification_type=notification_type,
         timeout=timeout

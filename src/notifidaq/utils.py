@@ -23,8 +23,7 @@ def unpack_payload(payload: Any, msg_module, notification_type=None):
                     payload.Unpack(msg)
                     if notification_type is None or isinstance(msg, notification_type):
                         return msg
-                    else:
-                        return None
+                    
         return None
 
 def matches_source(notification: Notification, instance_name=None, session_name=None, system_type=None) -> bool:

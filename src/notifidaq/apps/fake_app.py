@@ -2,7 +2,6 @@ from notifidaq.producer import NotifidaqProducer
 from notifidaq.consumer import NotifidaqConsumer
 from notifidaq.models.notification_pb2 import SystemType
 from notifidaq.models.generic_session_app_notification_pb2 import ApplicationInitialised, ApplicationStarted, ApplicationAdvertisedConnectivityService, ApplicationUnregisteredFromConnectivityService, Shutdown
-from notifidaq.models.app_notification_pb2 import ModulesInitialised
 
 import logging
 import click
@@ -36,8 +35,8 @@ def main(bootstrap, instance_name, session_name):
     time.sleep(random.random() * max_sleep)
     producer.notify(ApplicationStarted())
 
-    time.sleep(random.random() * max_sleep)
-    producer.notify(ModulesInitialised())
+    #time.sleep(random.random() * max_sleep)
+    #producer.notify(ModulesInitialised())
 
     time.sleep(random.random() * max_sleep)
     producer.notify(ApplicationAdvertisedConnectivityService())

@@ -28,17 +28,25 @@ class NotifidaqConsumer:
             value_deserializer = lambda v: Notification.FromString(v),
         )
 
+        self.run = True
 
     def consume(self, notification_type=None, instance_name=None, session_name=None, system_type=None):
-        for message in self.consumer:
-            notification = message.value
-            if not matches_source(notification, instance_name, session_name, system_type):
-                continue
+        while self.run:
+            for messages in self.consumer.poll(timeout_ms=1000).values():
+                for message in messages:
+                    try:
+                        notification = message.value
+                        if not matches_source(notification, instance_name, session_name, system_type):
+                            continue
+                        unpacked = unpack_payload(notification.payload, msg_module, notification_type)
+                        
+                    except Exception as e:
+                        self.log.error(f"Error unpacking message: {e}")
+                        unpacked = None
 
-            unpacked = unpack_payload(notification.payload, msg_module, notification_type)
-            if unpacked:
-                self.log.info(f"Received {unpacked.DESCRIPTOR.name} from topic '{self.topic}'")
-                yield unpacked
+                    if unpacked:
+                        self.log.info(f"Received {unpacked.DESCRIPTOR.name} from topic '{self.topic}'")
+                        yield unpacked
 
     def await_notification(self, notification_type=None, timeout=20, instance_name=None, session_name=None, system_type=None):
         start_time = time.time()
