@@ -30,23 +30,23 @@ def main(bootstrap, instance_name, session_name):
         session_name = session_name
     )
 
-    #time.sleep(random.random() * max_sleep)
-    #producer.notify(ApplicationInitialised())
+    time.sleep(random.random() * max_sleep)
+    producer.notify(NotificationType.Application_Initialised, ApplicationInitialised())
 
-    #time.sleep(random.random() * max_sleep)
-    #producer.notify(ApplicationStarted())
+    time.sleep(random.random() * max_sleep)
+    producer.notify(NotificationType.Application_Started,ApplicationStarted())
 
     time.sleep(random.random() * max_sleep)
     producer.notify(NotificationType.Modules_Initialised, ModulesInitialised())
 
-    #time.sleep(random.random() * max_sleep)
-    #producer.notify(ApplicationAdvertisedConnectivityService())
+    time.sleep(random.random() * max_sleep)
+    producer.notify(NotificationType.Application_AdvertisedConnectivityService,ApplicationAdvertisedConnectivityService())
 
-    #time.sleep(app_live_time)
-    #producer.notify(ApplicationUnregisteredFromConnectivityService())
+    time.sleep(app_live_time)
+    producer.notify(NotificationType.Application_UnregisteredFromConnectivityService,ApplicationUnregisteredFromConnectivityService())
 
-    #time.sleep(random.random() * max_sleep)
-    #producer.notify(Shutdown())
+    time.sleep(random.random() * max_sleep)
+    producer.notify(NotificationType.Shut_down,Shutdown())
 
     log.info(f"Fake application {instance_name} in session {session_name} shutdown")
 

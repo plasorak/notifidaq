@@ -17,6 +17,11 @@ enum SystemType {
 enum NotificationType {
   Modules_Initialised = 0;
   Controller_FoundChildren = 1;
+  Application_Initialised = 2;
+  Application_Started = 3;
+  Application_AdvertisedConnectivityService = 4;
+  Application_UnregisteredFromConnectivityService = 5;
+  Shut_down = 6;
 };
 
 message Origin {

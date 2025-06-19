@@ -2,6 +2,9 @@ from google.protobuf.any_pb2 import Any
 from notifidaq.models.notification_pb2 import SystemType
 
 
+
+
+
 def pack_to_any(data):
     any = Any()
     any.Pack(data)

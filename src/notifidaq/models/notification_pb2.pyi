@@ -52,11 +52,21 @@ class _NotificationTypeEnumTypeWrapper(google.protobuf.internal.enum_type_wrappe
     DESCRIPTOR: google.protobuf.descriptor.EnumDescriptor
     Modules_Initialised: _NotificationType.ValueType  # 0
     Controller_FoundChildren: _NotificationType.ValueType  # 1
+    Application_Initialised: _NotificationType.ValueType  # 2
+    Application_Started: _NotificationType.ValueType  # 3
+    Application_AdvertisedConnectivityService: _NotificationType.ValueType  # 4
+    Application_UnregisteredFromConnectivityService: _NotificationType.ValueType  # 5
+    Shut_down: _NotificationType.ValueType  # 6
 
 class NotificationType(_NotificationType, metaclass=_NotificationTypeEnumTypeWrapper): ...
 
 Modules_Initialised: NotificationType.ValueType  # 0
 Controller_FoundChildren: NotificationType.ValueType  # 1
+Application_Initialised: NotificationType.ValueType  # 2
+Application_Started: NotificationType.ValueType  # 3
+Application_AdvertisedConnectivityService: NotificationType.ValueType  # 4
+Application_UnregisteredFromConnectivityService: NotificationType.ValueType  # 5
+Shut_down: NotificationType.ValueType  # 6
 global___NotificationType = NotificationType
 
 @typing.final

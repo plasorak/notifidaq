@@ -17,18 +17,17 @@ def main(bootstrap, timeout, instance_name, session_name):
     consumer = NotifidaqConsumer(
         bootstrap=bootstrap,
         instance_name=instance_name,
-        system_type=SystemType.DAQ_APPLICATION,
+        system_type=SystemType.CONTROLLER,
         session_name=session_name
     )
+
+    notifi_type = NotificationType.Controller_FoundChildren
    
-    log.info("Subscribed. Waiting for ModulesInitialised...")
+    log.info(f"Subscribed. Waiting for notification type: '{NotificationType.Name(notifi_type)}'...")
 
     notification = consumer.await_notification(
-        notification_type=NotificationType.Modules_Initialised,
-        timeout=timeout,
-        instance_name=instance_name,
-        session_name=session_name,
-        system_type=SystemType.DAQ_APPLICATION
+        notification_type=notifi_type,
+        timeout=timeout
     )
 
     if notification:
